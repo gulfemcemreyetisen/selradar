@@ -3,15 +3,16 @@
   "use strict";
 
   // Hangi dosya kimden geliyor (planla aynı)
-  const FILES = {
-    event:        { path: "data/event.json",               owner: "Kişi 1", label: "Olay bilgisi" },
-    observations: { path: "data/observations.json",        owner: "Kişi 1", label: "Radar gözlemleri" },
-    rainfall:     { path: "data/rainfall.json",            owner: "Kişi 2", label: "GPM yağış" },
-    flood:        { path: "data/flood_extent.geojson",     owner: "Kişi 3", label: "Sel alanı" },
-    validation:   { path: "data/validation_results.json",  owner: "Kişi 3", label: "Doğrulama" },
-    critical:     { path: "data/critical_places.geojson",  owner: "Kişi 5", label: "Kritik altyapı" },
-    impact:       { path: "data/impact_results.json",      owner: "Kişi 5", label: "Etki analizi" }
-  };
+const FILES = {
+  event:        { path: "selradar/data/event.json",              owner: "Kişi 1", label: "Olay bilgisi" },
+  observations: { path: "selradar/data/observations.json",       owner: "Kişi 1", label: "Radar gözlemleri" },
+  rainfall:     { path: "selradar/data/rainfall.json",           owner: "Kişi 2", label: "GPM yağış" },
+  flood:        { path: "selradar/data/flood_extent.geojson",    owner: "Kişi 3", label: "Sel alanı" },
+  validation:   { path: "selradar/data/validation_results.json", owner: "Kişi 3", label: "Doğrulama" },
+  critical:     { path: "selradar/data/critical_places.geojson", owner: "Kişi 5", label: "Kritik altyapı" },
+  impact:       { path: "selradar/data/impact_results.json",     owner: "Kişi 5", label: "Etki analizi" }
+};
+
 
   const status = {}; // key -> "ok" | "sample" | "missing"
   const $ = id => document.getElementById(id);
