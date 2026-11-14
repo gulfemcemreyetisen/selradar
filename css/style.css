@@ -183,6 +183,9 @@ input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
 }
 
 /* ---------- Leaflet koyu tema düzeltmeleri ---------- */
+.dark-tiles {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); }
 .leaflet-popup-content { margin: 12px 14px; font-family: var(--font-body); }
 .leaflet-popup-content h3 { margin: 0 0 4px; font-size: 14px; }

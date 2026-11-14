@@ -53,9 +53,10 @@
 
     map = L.map("map", { zoomControl: true, preferCanvas: true }).setView(center, zoom);
 
-    const dark = L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      maxZoom: 19, subdomains: "abcd",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    const darkOsm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      className: "dark-tiles",
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
     const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
@@ -65,9 +66,9 @@
       maxZoom: 19, attribution: "Tiles &copy; Esri"
     });
 
-    dark.addTo(map);
+    darkOsm.addTo(map);
     layerControl = L.control.layers(
-      { "Koyu harita": dark, "OpenStreetMap": osm, "Uydu (optik)": sat },
+      { "Koyu harita": darkOsm, "OpenStreetMap": osm, "Uydu (optik)": sat },
       {},
       { collapsed: window.innerWidth < 900, position: "topright" }
     ).addTo(map);
