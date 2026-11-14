@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PentEarth · NISAR ile Sel İzleme</title>
+  <meta name="description" content="PentEarth: NASA NISAR radar, GPM yağış ve açık verilerle sel alanı tespiti ve etki analizi. NASA Space Apps Challenge 2026.">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Yazı tipleri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo" aria-hidden="true"></span>
+      <div>
+        <h1>PentEarth</h1>
+        <p class="tagline">Bulutların altını gören sel radarı</p>
+      </div>
+    </div>
+    <div class="event-head">
+      <span class="event-name" id="event-name">Olay yükleniyor…</span>
+      <span class="event-meta" id="event-meta"></span>
+    </div>
+    <button class="panel-toggle" id="panel-toggle" aria-label="Paneli aç/kapat" aria-expanded="true">☰</button>
+  </header>
+
+  <main class="layout">
+    <!-- HARİTA -->
+    <section class="map-wrap" aria-label="Sel haritası">
+      <div id="map"></div>
+
+      <!-- Zaman kaydırıcısı (harita üstünde) -->
+      <div class="timeline card" id="timeline">
+        <div class="timeline-head">
+          <span class="label">Radar gözlemi</span>
+          <span class="obs-stage" id="obs-stage">—</span>
+        </div>
+        <input type="range" id="time-slider" min="0" max="0" value="0" step="1" aria-label="Gözlem tarihi">
+        <div class="ticks" id="time-ticks"></div>
+        <p class="obs-desc" id="obs-desc"></p>
+      </div>
+
+      <div class="legend card" id="legend">
+        <div><i class="sw sw-flood"></i>Olası su baskını</div>
+        <div><i class="sw sw-hospital"></i>Hastane</div>
+        <div><i class="sw sw-school"></i>Okul</div>
+        <div><i class="sw sw-power"></i>Enerji tesisi</div>
+        <div><i class="sw sw-bridge"></i>Köprü / yol</div>
+        <div><i class="sw sw-other"></i>Diğer kritik yapı</div>
+      </div>
+    </section>
+
+    <!-- YAN PANEL -->
+    <aside class="sidebar" id="sidebar">
+
+      <section class="card stats" aria-label="Özet">
+        <div class="stat">
+          <span class="stat-value" id="stat-area">—</span>
+          <span class="stat-label">km² olası su baskını</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-pop">—</span>
+          <span class="stat-label">tahmini etkilenen kişi</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-rain">—</span>
+          <span class="stat-label">mm · sel öncesi 5 gün</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-roads">—</span>
+          <span class="stat-label">riskli yol</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Yağış (NASA GPM IMERG)</h2>
+        <div class="chart-box"><canvas id="rain-chart" aria-label="Günlük yağış grafiği"></canvas></div>
+        <p class="note" id="soil-note"></p>
+      </section>
+
+      <section class="card">
+        <h2>Öncelikli müdahale listesi</h2>
+        <ol class="priority-list" id="priority-list"><li class="muted">Yükleniyor…</li></ol>
+      </section>
+
+      <section class="card">
+        <h2>Doğrulama</h2>
+        <div id="validation" class="validation"><p class="muted">Yükleniyor…</p></div>
+      </section>
+
+      <section class="card">
+        <h2>Veri durumu ve kaynaklar</h2>
+        <ul class="data-status" id="data-status"></ul>
+        <ul class="sources" id="sources"></ul>
+      </section>
+
+      <section class="card disclaimer">
+        <h2>Bilimsel sınırlar</h2>
+        <p>Harita, radar görüntüleri arasındaki değişimden çıkarılan <strong>olası</strong> su baskını alanlarını gösterir. Her radar değişimi sel değildir; sonuçlar sokak bazında kesin su derinliği veya gelecekteki yayılım tahmini değildir. Saha doğrulaması gerekir.</p>
+      </section>
+
+      <footer class="foot">
+        NASA Space Apps Challenge 2026 · <em>Dancing with the SARs</em><br>
+        PentEarth ekibi
+      </footer>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
