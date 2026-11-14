@@ -1,174 +1,212 @@
-/* ============ PentEarth · Harita (Leaflet) ============ */
+/* ============ PentEarth · Uygulama ============ */
 (function () {
   "use strict";
 
-  let map, layerControl;
-  let floodLayer = null;
-  let criticalLayer = null;
-  let radarLayer = null;
-  let observations = [];
-  let defaultBounds = null;
-  const radarOpacity = 0.75;
-
-  // Kategori -> renk ve Türkçe ad (Kişi 5'in "category" alanı)
-  const CATEGORY = {
-    hospital:         { color: "#ff5d6c", label: "Hastane" },
-    clinic:           { color: "#ff5d6c", label: "Sağlık ocağı" },
-    school:           { color: "#b18cff", label: "Okul" },
-    power_substation: { color: "#ffb547", label: "Trafo / enerji" },
-    power:            { color: "#ffb547", label: "Enerji tesisi" },
-    bridge:           { color: "#9aa7bd", label: "Köprü" },
-    road:             { color: "#9aa7bd", label: "Yol" },
-    fire_station:     { color: "#ff8a3d", label: "İtfaiye" },
-    police:           { color: "#4da3ff", label: "Emniyet" }
-  };
-  const STATUS = {
-    flooded:              "Su baskını alanı içinde",
-    field_check_required: "Saha kontrolü gerekli",
-    risk_under_watch:     "Risk altında, izleniyor",
-    safe:                 "Şu an güvenli görünüyor"
+  // Hangi dosya kimden geliyor (planla aynı)
+  const FILES = {
+    event:        { path: "data/event.json",               owner: "Kişi 1", label: "Olay bilgisi" },
+    observations: { path: "data/observations.json",        owner: "Kişi 1", label: "Radar gözlemleri" },
+    rainfall:     { path: "data/rainfall.json",            owner: "Kişi 2", label: "GPM yağış" },
+    flood:        { path: "data/flood_extent.geojson",     owner: "Kişi 3", label: "Sel alanı" },
+    validation:   { path: "data/validation_results.json",  owner: "Kişi 3", label: "Doğrulama" },
+    critical:     { path: "data/critical_places.geojson",  owner: "Kişi 5", label: "Kritik altyapı" },
+    impact:       { path: "data/impact_results.json",      owner: "Kişi 5", label: "Etki analizi" }
   };
 
-  function esc(s) {
-    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
+  const status = {}; // key -> "ok" | "sample" | "missing"
+  const $ = id => document.getElementById(id);
+  const fmt = n => (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString("tr-TR");
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  function showMessage(text, ms = 6000) {
-    const wrap = document.querySelector(".map-wrap");
-    let box = wrap.querySelector(".map-msg");
-    if (!box) {
-      box = document.createElement("div");
-      box.className = "map-msg";
-      wrap.appendChild(box);
-    }
-    box.textContent = text;
-    box.style.opacity = 1;
-    clearTimeout(box._t);
-    if (ms) box._t = setTimeout(() => (box.style.opacity = 0), ms);
-  }
-
-  function init(event) {
-    const center = (event && event.coordinates) || [39.0, 35.0]; // [lat, lon]
-    const zoom = (event && event.zoom) || 6;
-
-    map = L.map("map", { zoomControl: true, preferCanvas: true }).setView(center, zoom);
-
-    const darkOsm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      className: "dark-tiles",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-    const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-    const sat = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      maxZoom: 19, attribution: "Tiles &copy; Esri"
-    });
-
-    darkOsm.addTo(map);
-    layerControl = L.control.layers(
-      { "Koyu harita": darkOsm, "OpenStreetMap": osm, "Uydu (optik)": sat },
-      {},
-      { collapsed: window.innerWidth < 900, position: "topright" }
-    ).addTo(map);
-
-    L.control.scale({ imperial: false }).addTo(map);
-
-    if (event && event.bounds) {
-      defaultBounds = L.latLngBounds(event.bounds);
-      map.fitBounds(defaultBounds, { padding: [20, 20] });
+  async function load(key) {
+    const f = FILES[key];
+    try {
+      const res = await fetch(f.path, { cache: "no-cache" });
+      if (!res.ok) throw new Error(res.status);
+      const text = await res.text();
+      const json = JSON.parse(text);
+      status[key] = (/Örnek|is_sample"\s*:\s*true/i.test(text)) ? "sample" : "ok";
+      return json;
+    } catch (e) {
+      status[key] = "missing";
+      return null;
     }
   }
 
-  function setFlood(geojson) {
-    if (floodLayer) { map.removeLayer(floodLayer); layerControl.removeLayer(floodLayer); }
-    floodLayer = L.geoJSON(geojson, {
-      style: { color: "#2f8cff", weight: 2, fillColor: "#2f8cff", fillOpacity: 0.35 },
-      onEachFeature: (f, layer) => {
-        const p = f.properties || {};
-        layer.bindPopup(
-          `<h3>Olası su baskını ${esc(p.zone_id || "")}</h3>` +
-          (p.area_km2 != null ? `<p>Alan: <b>${esc(p.area_km2)} km²</b></p>` : "") +
-          (p.confidence ? `<p>Güven: ${esc(p.confidence)}</p>` : "") +
-          (p.land_cover ? `<p>Arazi: ${esc(p.land_cover)}</p>` : "")
-        );
-      }
-    }).addTo(map);
-    layerControl.addOverlay(floodLayer, "Olası su baskını (radar)");
-    floodLayer.bringToFront();
-    return floodLayer;
+  /* ---- Alan hesabı (area_km2 yoksa poligondan yaklaşık) ---- */
+  function ringAreaKm2(ring) {
+    const R = 6371.0088, rad = Math.PI / 180;
+    let s = 0;
+    for (let i = 0; i < ring.length - 1; i++) {
+      const [x1, y1] = ring[i], [x2, y2] = ring[i + 1];
+      s += (x2 - x1) * rad * (2 + Math.sin(y1 * rad) + Math.sin(y2 * rad));
+    }
+    return Math.abs(s * R * R / 2);
+  }
+  function polygonArea(coords) {
+    return coords.reduce((a, ring, i) => a + (i === 0 ? 1 : -1) * ringAreaKm2(ring), 0);
+  }
+  function floodAreaKm2(gj) {
+    let total = 0;
+    (gj.features || []).forEach(f => {
+      const p = f.properties || {}, g = f.geometry || {};
+      if (p.area_km2 != null) total += Number(p.area_km2);
+      else if (g.type === "Polygon") total += polygonArea(g.coordinates);
+      else if (g.type === "MultiPolygon") g.coordinates.forEach(c => (total += polygonArea(c)));
+    });
+    return total;
   }
 
-  function setCritical(geojson) {
-    if (criticalLayer) { map.removeLayer(criticalLayer); layerControl.removeLayer(criticalLayer); }
-    criticalLayer = L.geoJSON(geojson, {
-      pointToLayer: (f, latlng) => {
-        const cat = CATEGORY[(f.properties || {}).category] || { color: "#35d0ba" };
-        const pr = (f.properties || {}).priority;
-        return L.circleMarker(latlng, {
-          radius: pr === 1 ? 9 : 7,
-          color: "#0b1220", weight: 2,
-          fillColor: cat.color, fillOpacity: 0.95
-        });
-      },
-      style: f => {           // yol/köprü çizgileri gelirse
-        const cat = CATEGORY[(f.properties || {}).category] || { color: "#9aa7bd" };
-        return { color: cat.color, weight: 4, opacity: 0.9 };
-      },
-      onEachFeature: (f, layer) => {
-        const p = f.properties || {};
-        const cat = CATEGORY[p.category];
-        layer.bindPopup(
-          `<h3>${esc(p.name || "Kritik yapı")}</h3>` +
-          `<p>${esc(cat ? cat.label : p.category || "")}${p.priority ? " · Öncelik " + esc(p.priority) : ""}</p>` +
-          (p.status ? `<p><b>${esc(STATUS[p.status] || p.status)}</b></p>` : "") +
-          (p.note ? `<p>${esc(p.note)}</p>` : "")
-        );
-      }
-    }).addTo(map);
-    layerControl.addOverlay(criticalLayer, "Kritik altyapı");
-    return criticalLayer;
+  /* ---- Bölümler ---- */
+  function renderEvent(ev) {
+    if (!ev) { $("event-name").textContent = "Olay bilgisi bekleniyor"; return; }
+    $("event-name").textContent = ev.event_name || "Sel olayı";
+    const parts = [ev.region, ev.country].filter(Boolean).join(", ");
+    const date = ev.flood_date ? new Date(ev.flood_date + "T00:00:00").toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) : "";
+    $("event-meta").textContent = [parts, date].filter(Boolean).join(" · ");
+    document.title = `PentEarth · ${ev.event_name || "Sel izleme"}`;
   }
 
-  /* Radar katmanları: her gözlem { image_url, bounds? } ya da { tile_url } */
-  function setObservations(list, fallbackBounds) {
-    observations = Array.isArray(list) ? list : [];
-    if (fallbackBounds) defaultBounds = L.latLngBounds(fallbackBounds);
-  }
-
-  function showObservation(i) {
-    const obs = observations[i];
-    if (radarLayer) { map.removeLayer(radarLayer); layerControl.removeLayer(radarLayer); radarLayer = null; }
-    if (!obs) return;
-
-    if (obs.tile_url) {
-      radarLayer = L.tileLayer(obs.tile_url, { opacity: radarOpacity, maxZoom: 19 });
-    } else if (obs.image_url) {
-      const b = obs.bounds ? L.latLngBounds(obs.bounds) : defaultBounds;
-      if (!b) { showMessage("Radar katmanı için koordinat sınırı (bounds) eksik."); return; }
-      radarLayer = L.imageOverlay(obs.image_url, b, { opacity: radarOpacity, interactive: false });
-      radarLayer.on("error", () => {
-        showMessage(`Radar görüntüsü henüz yok: ${obs.image_url} (Kişi 1 yükleyince görünecek)`);
-        if (radarLayer) { map.removeLayer(radarLayer); layerControl.removeLayer(radarLayer); radarLayer = null; }
-      });
-    } else {
-      showMessage("Bu gözlem için radar katmanı tanımlı değil.");
+  function renderTimeline(obs) {
+    const slider = $("time-slider"), ticks = $("time-ticks");
+    if (!obs || !obs.length) {
+      $("timeline").style.display = "none";
       return;
     }
+    obs.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    slider.max = obs.length - 1;
+    slider.disabled = obs.length < 2;
+    ticks.innerHTML = obs.map((o, i) => `<span data-i="${i}">${esc(o.date)}</span>`).join("");
 
-    radarLayer.addTo(map);
-    layerControl.addOverlay(radarLayer, `Radar: ${obs.date || ""}`);
-    if (floodLayer) floodLayer.bringToFront();
+    const show = i => {
+      const o = obs[i];
+      $("obs-stage").textContent = `${o.stage || ""} · ${o.sensor || ""}`;
+      $("obs-desc").textContent = o.description || "";
+      ticks.querySelectorAll("span").forEach((s, k) => s.classList.toggle("active", k === i));
+      PEMap.showObservation(i);
+    };
+    slider.addEventListener("input", () => show(Number(slider.value)));
+    ticks.addEventListener("click", e => {
+      const i = e.target.dataset.i;
+      if (i != null) { slider.value = i; show(Number(i)); }
+    });
+    if (obs.length < 2) {
+      $("obs-desc").textContent = "Uyarı: tek radar gözlemi var; önce–sonra değişimi gösterilemez.";
+    }
+    show(0);
   }
 
-  function fit() {
-    if (floodLayer && floodLayer.getLayers().length) {
-      map.fitBounds(floodLayer.getBounds(), { padding: [40, 40], maxZoom: 14 });
+  function renderStats(flood, impact, rain) {
+    $("stat-area").textContent = flood ? floodAreaKm2(flood).toLocaleString("tr-TR", { maximumFractionDigits: 1 }) : "—";
+    $("stat-pop").textContent = impact ? fmt(impact.estimated_affected_population) : "—";
+    let rain5 = rain ? rain.pre_flood_5day_total_mm : null;
+    $("stat-rain").textContent = rain5 != null ? fmt(rain5) : "—";
+    $("stat-roads").textContent = impact ? fmt(impact.closed_roads_count) : "—";
+  }
+
+  function renderRain(rain, ev) {
+    if (!rain || !Array.isArray(rain.daily) || !rain.daily.length) {
+      PECharts.empty("Yağış verisi bekleniyor (Kişi 2 · rainfall.json)");
+      return;
+    }
+    PECharts.rain(rain, ev && ev.flood_date);
+    $("soil-note").textContent = [rain.smap_soil_saturation_note, rain.source ? `Kaynak: ${rain.source}` : ""].filter(Boolean).join(" · ");
+  }
+
+  function renderPriorities(impact) {
+    const ol = $("priority-list");
+    const list = impact && Array.isArray(impact.priority_actions) ? impact.priority_actions : [];
+    if (!list.length) {
+      ol.innerHTML = `<li class="muted" style="display:block">Etki analizi bekleniyor (Kişi 5 · impact_results.json)</li>`;
+      return;
+    }
+    ol.innerHTML = list
+      .sort((a, b) => (a.rank || 99) - (b.rank || 99))
+      .map(a => `<li><span class="rank">${esc(a.rank)}</span><div><strong>${esc(a.target)}</strong><span class="reason">${esc(a.reason)}</span></div></li>`)
+      .join("");
+    if (impact.population_source) {
+      ol.insertAdjacentHTML("afterend", `<p class="note">Nüfus kaynağı: ${esc(impact.population_source)}</p>`);
     }
   }
 
-  function invalidate() { if (map) map.invalidateSize(); }
+  function renderValidation(v) {
+    const box = $("validation");
+    if (!v) {
+      box.innerHTML = `<p class="muted">Bağımsız referansla doğrulama sonucu henüz yok (Kişi 3 · validation_results.json). Doğrulanmamış sonuçlar ön bulgu olarak değerlendirilmelidir.</p>`;
+      return;
+    }
+    const pct = x => x == null ? "—" : (x <= 1 ? (x * 100).toFixed(0) : Number(x).toFixed(0)) + "%";
+    box.innerHTML = `
+      <div class="metrics">
+        <div class="metric"><b>${pct(v.precision)}</b><small>Precision</small></div>
+        <div class="metric"><b>${pct(v.recall)}</b><small>Recall</small></div>
+        <div class="metric"><b>${pct(v.iou)}</b><small>IoU</small></div>
+      </div>
+      ${v.reference ? `<p class="note">Referans: ${esc(v.reference)}</p>` : ""}`;
+  }
 
-  window.PEMap = { init, setFlood, setCritical, setObservations, showObservation, showMessage, fit, invalidate };
+  function renderStatus(ev) {
+    const label = { ok: "yüklendi", sample: "örnek veri", missing: "bekleniyor" };
+    $("data-status").innerHTML = Object.entries(FILES).map(([k, f]) =>
+      `<li><span>${f.label} <span class="muted">· ${f.owner}</span></span><span class="badge ${status[k]}">${label[status[k]]}</span></li>`
+    ).join("");
+
+    const sources = (ev && ev.sources) || [];
+    const defaults = [
+      { name: "NASA ASF Vertex (NISAR)", url: "https://search.asf.alaska.edu/" },
+      { name: "NASA GPM IMERG", url: "https://gpm.nasa.gov/data/imerg" },
+      { name: "OpenStreetMap", url: "https://www.openstreetmap.org/" },
+      { name: "WorldPop", url: "https://www.worldpop.org/" }
+    ];
+    const seen = new Set();
+    $("sources").innerHTML = [...sources, ...defaults]
+      .filter(s => s && s.url && !seen.has(s.url) && seen.add(s.url))
+      .map(s => `<li>↗ <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name || s.url)}</a></li>`)
+      .join("");
+  }
+
+  /* ---- Mobil panel düğmesi ---- */
+  function setupToggle() {
+    const btn = $("panel-toggle"), side = $("sidebar");
+    btn.addEventListener("click", () => {
+      const collapsed = side.classList.toggle("collapsed");
+      btn.setAttribute("aria-expanded", String(!collapsed));
+      setTimeout(PEMap.invalidate, 50);
+    });
+  }
+
+  /* ---- Başlat ---- */
+  async function start() {
+    setupToggle();
+
+    if (location.protocol === "file:") {
+      document.body.insertAdjacentHTML("afterbegin",
+        `<div style="background:#ffb547;color:#1a1200;padding:8px 16px;font-size:13px">
+          Dosyayı çift tıklayarak açtınız; tarayıcı data/ dosyalarını okumaz. VS Code'da <b>Live Server</b> ile açın.</div>`);
+    }
+
+    const keys = Object.keys(FILES);
+    const results = await Promise.all(keys.map(load));
+    const d = Object.fromEntries(keys.map((k, i) => [k, results[i]]));
+
+    renderEvent(d.event);
+    PEMap.init(d.event);
+
+    if (d.observations) PEMap.setObservations(d.observations, d.event && d.event.bounds);
+    if (d.flood) PEMap.setFlood(d.flood);
+    if (d.critical) PEMap.setCritical(d.critical);
+    if (d.flood) PEMap.fit();
+
+    renderTimeline(d.observations);
+    renderStats(d.flood, d.impact, d.rainfall);
+    renderRain(d.rainfall, d.event);
+    renderPriorities(d.impact);
+    renderValidation(d.validation);
+    renderStatus(d.event);
+
+    const sampleCount = Object.values(status).filter(s => s === "sample").length;
+    if (sampleCount) PEMap.showMessage(`${sampleCount} dosya hâlâ örnek veri. Gerçek NASA verisi geldikçe otomatik güncellenecek.`, 7000);
+  }
+
+  document.addEventListener("DOMContentLoaded", start);
 })();
