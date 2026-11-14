@@ -1,0 +1,18 @@
+[
+  {
+    "id": "pre_flood",
+    "date": "2026-09-03",
+    "stage": "Sel Öncesi",
+    "sensor": "NISAR L-Band",
+    "image_url": "data/radar_before.png",
+    "description": "Yağış öncesi normal su seviyesi ve toprak yüzeyi."
+  },
+  {
+    "id": "during_flood",
+    "date": "2026-09-15",
+    "stage": "Sel Anı / Hemen Sonrası",
+    "sensor": "NISAR L-Band",
+    "image_url": "data/radar_after.png",
+    "description": "Bulut örtüsü altındaki genişlemiş su yüzeyleri."
+  }
+]

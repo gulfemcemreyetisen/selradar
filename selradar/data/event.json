@@ -1,0 +1,16 @@
+{
+  "event_name": "Örnek Sel Olayı (Kişi 1 Güncelleyecek)",
+  "country": "Ülke",
+  "region": "Bölge / Şehir",
+  "coordinates": [38.4237, 27.1428],
+  "zoom": 11,
+  "bounds": [[38.30, 27.00], [38.55, 27.30]],
+  "flood_date": "2026-09-15",
+  "nisar_available_dates": ["2026-09-03", "2026-09-15", "2026-09-27"],
+  "sources": [
+    {
+      "name": "NASA ASF Vertex (NISAR)",
+      "url": "https://search.asf.alaska.edu/"
+    }
+  ]
+}

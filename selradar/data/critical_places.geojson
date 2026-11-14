@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Örnek Devlet Hastanesi",
+        "category": "hospital",
+        "status": "risk_under_watch",
+        "priority": 1,
+        "note": "Ana erişim yolu sel sınırına 150m mesafede."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [27.145, 38.425]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Trafo Merkezi TR-04",
+        "category": "power_substation",
+        "status": "field_check_required",
+        "priority": 1,
+        "note": "Su baskını poligonu içinde; saha kontrolü gerekir."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [27.138, 38.421]
+      }
+    }
+  ]
+}

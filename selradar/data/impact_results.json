@@ -1,0 +1,9 @@
+{
+  "estimated_affected_population": 12400,
+  "population_source": "WorldPop 100m",
+  "closed_roads_count": 6,
+  "priority_actions": [
+    {"rank": 1, "target": "Trafo Merkezi TR-04", "reason": "Sel alanı ile kesişiyor, elektrik kesintisi/güvenlik kontrolü gerekli."},
+    {"rank": 2, "target": "Örnek Devlet Hastanesi Yolu", "reason": "Acil ulaşım güzergahı risk altında."}
+  ]
+}
