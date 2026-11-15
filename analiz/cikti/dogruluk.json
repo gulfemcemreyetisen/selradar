@@ -1,0 +1,50 @@
+{
+  "EMSR857_AOI01_FEP_PRODUCT_v1": {
+    "iou": 0.2555,
+    "kesinlik": 0.2782,
+    "duyarlilik": 0.7579,
+    "f1": 0.407,
+    "bizim_sel_km2": 548.0,
+    "referans_sel_km2": 201.11,
+    "kesisim_km2": 152.43,
+    "yanlis_alarm_km2": 395.57,
+    "kacirilan_km2": 48.68,
+    "kapsam_km2": 1495.2
+  },
+  "EMSR857_AOI01_DEL_PRODUCT_v1": {
+    "iou": 0.4762,
+    "kesinlik": 0.7268,
+    "duyarlilik": 0.5801,
+    "f1": 0.6452,
+    "bizim_sel_km2": 700.67,
+    "referans_sel_km2": 877.91,
+    "kesisim_km2": 509.24,
+    "yanlis_alarm_km2": 191.43,
+    "kacirilan_km2": 368.67,
+    "kapsam_km2": 1929.8
+  },
+  "EMSR857_AOI01_DEL_MONIT01_v1": {
+    "iou": 0.4514,
+    "kesinlik": 0.8317,
+    "duyarlilik": 0.4968,
+    "f1": 0.622,
+    "bizim_sel_km2": 762.48,
+    "referans_sel_km2": 1276.6,
+    "kesisim_km2": 634.19,
+    "yanlis_alarm_km2": 128.29,
+    "kacirilan_km2": 642.41,
+    "kapsam_km2": 2253.14
+  },
+  "EMSR857_AOI01_DEL_MONIT02_v2": {
+    "iou": 0.3537,
+    "kesinlik": 0.629,
+    "duyarlilik": 0.447,
+    "f1": 0.5226,
+    "bizim_sel_km2": 765.64,
+    "referans_sel_km2": 1077.32,
+    "kesisim_km2": 481.58,
+    "yanlis_alarm_km2": 284.06,
+    "kacirilan_km2": 595.74,
+    "kapsam_km2": 2339.98
+  }
+}

@@ -1,0 +1,1211 @@
+{
+  "tampon_m": 100,
+  "sel_haritasi": "selradar\\data\\flood_extent.geojson",
+  "etkilenen_hastane_sayisi": 0,
+  "etkilenen_hastane_isimleri": [],
+  "etkilenen_okul_sayisi": 35,
+  "etkilenen_okul_isimleri": [
+    "Associação humanitária crista Hlauleka Mumpsa",
+    "Centro infantil josina machel",
+    "EPC de MuKotwene",
+    "Escola",
+    "Escola",
+    "Escola",
+    "Escola",
+    "Escola",
+    "Escola",
+    "Escola",
+    "Escola de cumba",
+    "Escola de primria de marrambajaneecho",
+    "Escola primaria",
+    "Escola primaria Josina machel",
+    "Escola primaria de 1 graus de tingonhamene",
+    "Escola primaria de sangene",
+    "Escola primaria do 1° e 2 ° graus de bombofo",
+    "Escola primária Santa Luísa de Marillac",
+    "Escola primária de chiguidela",
+    "Escola primária de mananganine",
+    "Escola primária de matuba",
+    "Escola primária de muzumuia",
+    "Escola secundária de Manjangue",
+    "Escolinha",
+    "Escolinha de tingonhamene",
+    "Tinhonhamene",
+    "escola basica da barragem",
+    "escola completa de africa amiga",
+    "escola paroquial da barragem",
+    "escola primaria do 2°bairro de chalucuane",
+    "escola primária de marradjane",
+    "escola primária de matuba",
+    "escola primária de nwachicoluane",
+    "escola secundaria filipe jacinto nyusi",
+    "fraternidade sem fronteiras"
+  ],
+  "etkilenen_kopru_sayisi": 25,
+  "etkilenen_kopru_isimleri": [
+    "208",
+    "208",
+    "(isimsiz 23 adet)"
+  ],
+  "etkilenen_yol_parcasi_sayisi": 45,
+  "etkilenen_yol_km": 116.7,
+  "sel_icindeki_yapi_sayisi": 62,
+  "yakinindaki_yapi_sayisi": 43,
+  "yapilar": [
+    {
+      "id": "osm_way_44166540",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.8814,
+        -24.40625
+      ]
+    },
+    {
+      "id": "osm_way_44166542",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.00644,
+        -24.49937
+      ]
+    },
+    {
+      "id": "osm_way_196937367",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.16004,
+        -24.69222
+      ]
+    },
+    {
+      "id": "osm_way_198967128",
+      "kategori": "kopru",
+      "ad": "208",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.00417,
+        -24.52418
+      ]
+    },
+    {
+      "id": "osm_way_199231616",
+      "kategori": "kopru",
+      "ad": "208",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.86069,
+        -24.4147
+      ]
+    },
+    {
+      "id": "osm_way_225773062",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.42098,
+        -24.51925
+      ]
+    },
+    {
+      "id": "osm_way_459886820",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.48103,
+        -24.67511
+      ]
+    },
+    {
+      "id": "osm_way_459886822",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.47234,
+        -24.67532
+      ]
+    },
+    {
+      "id": "osm_way_459886825",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.46597,
+        -24.67516
+      ]
+    },
+    {
+      "id": "osm_way_459889781",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.27969,
+        -24.61929
+      ]
+    },
+    {
+      "id": "osm_way_618498353",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.13059,
+        -24.54843
+      ]
+    },
+    {
+      "id": "osm_way_618510381",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.47625,
+        -24.67543
+      ]
+    },
+    {
+      "id": "osm_way_618551558",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.48857,
+        -24.81992
+      ]
+    },
+    {
+      "id": "osm_way_618551560",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.48735,
+        -24.82244
+      ]
+    },
+    {
+      "id": "osm_way_618555603",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.84423,
+        -24.41942
+      ]
+    },
+    {
+      "id": "osm_way_618593328",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.09392,
+        -24.52985
+      ]
+    },
+    {
+      "id": "osm_node_13633715583",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.77829,
+        -24.32097
+      ]
+    },
+    {
+      "id": "osm_node_13633715584",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.77021,
+        -24.31604
+      ]
+    },
+    {
+      "id": "osm_node_13633715587",
+      "kategori": "okul",
+      "ad": "Escola primaria Josina machel",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.93659,
+        -24.51599
+      ]
+    },
+    {
+      "id": "osm_node_13633715590",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.17791,
+        -24.63902
+      ]
+    },
+    {
+      "id": "osm_node_13633715591",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.17755,
+        -24.63979
+      ]
+    },
+    {
+      "id": "osm_node_13633724855",
+      "kategori": "okul",
+      "ad": "Escolinha",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.99311,
+        -24.56961
+      ]
+    },
+    {
+      "id": "osm_node_13633799328",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.77825,
+        -24.32112
+      ]
+    },
+    {
+      "id": "osm_node_13633799329",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.77009,
+        -24.31621
+      ]
+    },
+    {
+      "id": "osm_node_13635194792",
+      "kategori": "okul",
+      "ad": "escola secundaria filipe jacinto nyusi",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.94321,
+        -24.4982
+      ]
+    },
+    {
+      "id": "osm_node_13635195949",
+      "kategori": "okul",
+      "ad": "escola primária de matuba",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.91082,
+        -24.48409
+      ]
+    },
+    {
+      "id": "osm_node_13635203715",
+      "kategori": "okul",
+      "ad": "fraternidade sem fronteiras",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.87538,
+        -24.41778
+      ]
+    },
+    {
+      "id": "osm_way_44166538",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.8751,
+        -24.41
+      ]
+    },
+    {
+      "id": "osm_way_44166544",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.37727,
+        -24.66902
+      ]
+    },
+    {
+      "id": "osm_way_44166553",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.87596,
+        -24.4102
+      ]
+    },
+    {
+      "id": "osm_way_179185597",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.86233,
+        -24.77204
+      ]
+    },
+    {
+      "id": "osm_way_179185600",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.9316,
+        -24.65997
+      ]
+    },
+    {
+      "id": "osm_way_184937843",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.76066,
+        -24.09143
+      ]
+    },
+    {
+      "id": "osm_way_196934702",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.0772,
+        -24.63507
+      ]
+    },
+    {
+      "id": "osm_way_198967129",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.00457,
+        -24.52247
+      ]
+    },
+    {
+      "id": "osm_way_199231615",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.86831,
+        -24.41368
+      ]
+    },
+    {
+      "id": "osm_way_199239804",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.1353,
+        -24.78985
+      ]
+    },
+    {
+      "id": "osm_way_199914163",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.90393,
+        -24.48395
+      ]
+    },
+    {
+      "id": "osm_way_221052397",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.41091,
+        -24.85964
+      ]
+    },
+    {
+      "id": "osm_way_221607706",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.11913,
+        -24.73672
+      ]
+    },
+    {
+      "id": "osm_way_243958024",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.85614,
+        -24.84018
+      ]
+    },
+    {
+      "id": "osm_way_328372267",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.00405,
+        -24.52435
+      ]
+    },
+    {
+      "id": "osm_way_329437033",
+      "kategori": "yol",
+      "ad": "405",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.69981,
+        -25.00898
+      ]
+    },
+    {
+      "id": "osm_way_459886821",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.47907,
+        -24.67552
+      ]
+    },
+    {
+      "id": "osm_way_459886823",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.46924,
+        -24.67522
+      ]
+    },
+    {
+      "id": "osm_way_459886824",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.48693,
+        -24.67293
+      ]
+    },
+    {
+      "id": "osm_way_459889773",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.28184,
+        -24.62306
+      ]
+    },
+    {
+      "id": "osm_way_459889774",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.27867,
+        -24.6175
+      ]
+    },
+    {
+      "id": "osm_way_459889775",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.27821,
+        -24.61671
+      ]
+    },
+    {
+      "id": "osm_way_459889779",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.27388,
+        -24.61031
+      ]
+    },
+    {
+      "id": "osm_way_459889780",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.27608,
+        -24.61297
+      ]
+    },
+    {
+      "id": "osm_way_459889782",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.05282,
+        -24.51016
+      ]
+    },
+    {
+      "id": "osm_way_459890362",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.0055,
+        -24.5101
+      ]
+    },
+    {
+      "id": "osm_way_604991647",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.03008,
+        -24.5713
+      ]
+    },
+    {
+      "id": "osm_way_618498354",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.20259,
+        -24.57696
+      ]
+    },
+    {
+      "id": "osm_way_618510382",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.47306,
+        -24.67533
+      ]
+    },
+    {
+      "id": "osm_way_618551559",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.48788,
+        -24.8212
+      ]
+    },
+    {
+      "id": "osm_way_618551561",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.50654,
+        -24.81096
+      ]
+    },
+    {
+      "id": "osm_way_618555604",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.85196,
+        -24.41474
+      ]
+    },
+    {
+      "id": "osm_way_618593324",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.10086,
+        -24.70008
+      ]
+    },
+    {
+      "id": "osm_way_618593332",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        33.11406,
+        -24.53939
+      ]
+    },
+    {
+      "id": "osm_way_1383020431",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": true,
+      "sele_mesafe_m": 0,
+      "konum": [
+        32.99217,
+        -24.54092
+      ]
+    },
+    {
+      "id": "osm_way_196936029",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 30,
+      "konum": [
+        33.20919,
+        -24.70014
+      ]
+    },
+    {
+      "id": "osm_way_196936030",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 39,
+      "konum": [
+        33.20985,
+        -24.69999
+      ]
+    },
+    {
+      "id": "osm_way_221600884",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 34,
+      "konum": [
+        33.18956,
+        -24.7044
+      ]
+    },
+    {
+      "id": "osm_way_225773063",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 59,
+      "konum": [
+        33.41965,
+        -24.52026
+      ]
+    },
+    {
+      "id": "osm_way_225773713",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 38,
+      "konum": [
+        33.48202,
+        -24.37959
+      ]
+    },
+    {
+      "id": "osm_way_459884535",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 6,
+      "konum": [
+        33.366,
+        -24.70561
+      ]
+    },
+    {
+      "id": "osm_way_604991644",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 5,
+      "konum": [
+        33.06542,
+        -24.59002
+      ]
+    },
+    {
+      "id": "osm_way_1383020432",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 24,
+      "konum": [
+        32.98633,
+        -24.54902
+      ]
+    },
+    {
+      "id": "osm_way_1530623138",
+      "kategori": "kopru",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 13,
+      "konum": [
+        33.41516,
+        -24.52734
+      ]
+    },
+    {
+      "id": "osm_node_8383810990",
+      "kategori": "okul",
+      "ad": "EPC de MuKotwene",
+      "sel_icinde": false,
+      "sele_mesafe_m": 95,
+      "konum": [
+        33.40407,
+        -24.68374
+      ]
+    },
+    {
+      "id": "osm_node_13633715581",
+      "kategori": "okul",
+      "ad": "Escola",
+      "sel_icinde": false,
+      "sele_mesafe_m": 67,
+      "konum": [
+        33.19779,
+        -24.66526
+      ]
+    },
+    {
+      "id": "osm_node_13633715582",
+      "kategori": "okul",
+      "ad": "Escola primária de mananganine",
+      "sel_icinde": false,
+      "sele_mesafe_m": 95,
+      "konum": [
+        33.19843,
+        -24.66579
+      ]
+    },
+    {
+      "id": "osm_node_13633715586",
+      "kategori": "okul",
+      "ad": "Escola primaria do 1° e 2 ° graus de bombofo",
+      "sel_icinde": false,
+      "sele_mesafe_m": 87,
+      "konum": [
+        32.94975,
+        -24.60082
+      ]
+    },
+    {
+      "id": "osm_node_13633724853",
+      "kategori": "okul",
+      "ad": "Escola primaria de sangene",
+      "sel_icinde": false,
+      "sele_mesafe_m": 30,
+      "konum": [
+        33.44197,
+        -24.76403
+      ]
+    },
+    {
+      "id": "osm_node_13633724857",
+      "kategori": "okul",
+      "ad": "Centro infantil josina machel",
+      "sel_icinde": false,
+      "sele_mesafe_m": 100,
+      "konum": [
+        33.25042,
+        -24.69153
+      ]
+    },
+    {
+      "id": "osm_node_13633724859",
+      "kategori": "okul",
+      "ad": "Tinhonhamene",
+      "sel_icinde": false,
+      "sele_mesafe_m": 74,
+      "konum": [
+        32.91012,
+        -24.72707
+      ]
+    },
+    {
+      "id": "osm_node_13633724860",
+      "kategori": "okul",
+      "ad": "Escolinha de tingonhamene",
+      "sel_icinde": false,
+      "sele_mesafe_m": 33,
+      "konum": [
+        32.91034,
+        -24.72742
+      ]
+    },
+    {
+      "id": "osm_node_13633799320",
+      "kategori": "okul",
+      "ad": "Escola de cumba",
+      "sel_icinde": false,
+      "sele_mesafe_m": 98,
+      "konum": [
+        32.92381,
+        -24.48168
+      ]
+    },
+    {
+      "id": "osm_node_13633799323",
+      "kategori": "okul",
+      "ad": "Escola primária de muzumuia",
+      "sel_icinde": false,
+      "sele_mesafe_m": 13,
+      "konum": [
+        32.9335,
+        -24.48853
+      ]
+    },
+    {
+      "id": "osm_node_13633799325",
+      "kategori": "okul",
+      "ad": "Escola primaria de 1 graus de tingonhamene",
+      "sel_icinde": false,
+      "sele_mesafe_m": 29,
+      "konum": [
+        32.91027,
+        -24.72746
+      ]
+    },
+    {
+      "id": "osm_node_13633799327",
+      "kategori": "okul",
+      "ad": "Escola de primria de marrambajaneecho",
+      "sel_icinde": false,
+      "sele_mesafe_m": 56,
+      "konum": [
+        33.23645,
+        -24.63397
+      ]
+    },
+    {
+      "id": "osm_node_13633881903",
+      "kategori": "okul",
+      "ad": "Escola primária de matuba",
+      "sel_icinde": false,
+      "sele_mesafe_m": 96,
+      "konum": [
+        32.90853,
+        -24.49805
+      ]
+    },
+    {
+      "id": "osm_node_13633986006",
+      "kategori": "okul",
+      "ad": "Escola primaria",
+      "sel_icinde": false,
+      "sele_mesafe_m": 70,
+      "konum": [
+        33.09507,
+        -24.70617
+      ]
+    },
+    {
+      "id": "osm_node_13635187381",
+      "kategori": "okul",
+      "ad": "Escola primária Santa Luísa de Marillac",
+      "sel_icinde": false,
+      "sele_mesafe_m": 78,
+      "konum": [
+        32.84273,
+        -24.42672
+      ]
+    },
+    {
+      "id": "osm_node_13635187386",
+      "kategori": "okul",
+      "ad": "escola primária de nwachicoluane",
+      "sel_icinde": false,
+      "sele_mesafe_m": 73,
+      "konum": [
+        32.99553,
+        -24.66896
+      ]
+    },
+    {
+      "id": "osm_node_13635187397",
+      "kategori": "okul",
+      "ad": "escola completa de africa amiga",
+      "sel_icinde": false,
+      "sele_mesafe_m": 41,
+      "konum": [
+        32.98539,
+        -24.51527
+      ]
+    },
+    {
+      "id": "osm_node_13635194793",
+      "kategori": "okul",
+      "ad": "Escola secundária de Manjangue",
+      "sel_icinde": false,
+      "sele_mesafe_m": 47,
+      "konum": [
+        32.82564,
+        -24.4364
+      ]
+    },
+    {
+      "id": "osm_node_13635194800",
+      "kategori": "okul",
+      "ad": "escola primaria do 2°bairro de chalucuane",
+      "sel_icinde": false,
+      "sele_mesafe_m": 31,
+      "konum": [
+        33.3671,
+        -24.71918
+      ]
+    },
+    {
+      "id": "osm_node_13635195950",
+      "kategori": "okul",
+      "ad": "escola primária de marradjane",
+      "sel_icinde": false,
+      "sele_mesafe_m": 62,
+      "konum": [
+        33.27198,
+        -24.66489
+      ]
+    },
+    {
+      "id": "osm_node_13635195951",
+      "kategori": "okul",
+      "ad": "escola paroquial da barragem",
+      "sel_icinde": false,
+      "sele_mesafe_m": 22,
+      "konum": [
+        32.87197,
+        -24.40648
+      ]
+    },
+    {
+      "id": "osm_node_13635195956",
+      "kategori": "okul",
+      "ad": "escola basica da barragem",
+      "sel_icinde": false,
+      "sele_mesafe_m": 47,
+      "konum": [
+        32.87356,
+        -24.40864
+      ]
+    },
+    {
+      "id": "osm_node_13635203708",
+      "kategori": "okul",
+      "ad": "Escola primária de chiguidela",
+      "sel_icinde": false,
+      "sele_mesafe_m": 65,
+      "konum": [
+        33.32016,
+        -24.67434
+      ]
+    },
+    {
+      "id": "osm_node_13635203714",
+      "kategori": "okul",
+      "ad": "Associação humanitária crista Hlauleka Mumpsa",
+      "sel_icinde": false,
+      "sele_mesafe_m": 54,
+      "konum": [
+        32.98629,
+        -24.55021
+      ]
+    },
+    {
+      "id": "osm_way_37623006",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 29,
+      "konum": [
+        33.12412,
+        -24.92546
+      ]
+    },
+    {
+      "id": "osm_way_44166549",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 22,
+      "konum": [
+        33.00381,
+        -24.52454
+      ]
+    },
+    {
+      "id": "osm_way_44166554",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 35,
+      "konum": [
+        33.00352,
+        -24.5252
+      ]
+    },
+    {
+      "id": "osm_way_169388244",
+      "kategori": "yol",
+      "ad": "Avenida Eduardo Mondlane",
+      "sel_icinde": false,
+      "sele_mesafe_m": 98,
+      "konum": [
+        33.00119,
+        -24.52828
+      ]
+    },
+    {
+      "id": "osm_way_169391296",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 22,
+      "konum": [
+        33.00395,
+        -24.52462
+      ]
+    },
+    {
+      "id": "osm_way_477180799",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 11,
+      "konum": [
+        32.87489,
+        -24.41022
+      ]
+    },
+    {
+      "id": "osm_way_477180800",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 22,
+      "konum": [
+        32.87489,
+        -24.41009
+      ]
+    },
+    {
+      "id": "osm_way_477180801",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 11,
+      "konum": [
+        32.87522,
+        -24.41011
+      ]
+    },
+    {
+      "id": "osm_way_477180802",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 6,
+      "konum": [
+        32.87522,
+        -24.4102
+      ]
+    },
+    {
+      "id": "osm_way_1062217999",
+      "kategori": "yol",
+      "ad": "",
+      "sel_icinde": false,
+      "sele_mesafe_m": 5,
+      "konum": [
+        32.8064,
+        -24.9005
+      ]
+    }
+  ]
+}

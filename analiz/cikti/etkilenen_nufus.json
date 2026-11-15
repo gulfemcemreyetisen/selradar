@@ -1,0 +1,10 @@
+{
+  "etkilenen_tahmini_nufus": 38087,
+  "etkilenen_tahmini_nufus_100m_tamponla": 110535,
+  "bolgedeki_toplam_nufus": 1452212,
+  "etkilenen_oran_yuzde": 2.6,
+  "sel_alani_km2": 2206.6,
+  "sel_alaninin_worldpop_icindeki_yuzdesi": 100.0,
+  "sel_haritasi": "selradar\\data\\flood_extent.geojson",
+  "nufus_kaynagi": "WorldPop 2026, 100 m (CC BY 4.0)"
+}
